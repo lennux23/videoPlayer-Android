@@ -1,6 +1,11 @@
 package lennux.com.mx.videoplayer.models;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
+
+import java.util.ArrayList;
+
+import lennux.com.mx.videoplayer.R;
 
 /**
  * Created by mobilestudio06 on 27/04/15.
@@ -14,6 +19,15 @@ public class Artist{
         this.nameArtist = nameArtist;
         this.nameGenre = nameGenre;
         this.picArtist = picArtist;
+    }
+
+    public static ArrayList<Artist> getArtists(Context context){
+        ArrayList<Artist> listArtist= new ArrayList<Artist>();
+        listArtist.add(new Artist("Julion Alvarez","Banda", context.getResources().getDrawable(R.mipmap.banda_ico)));
+
+
+        return listArtist;
+
     }
 
     public String getNameArtist() {
