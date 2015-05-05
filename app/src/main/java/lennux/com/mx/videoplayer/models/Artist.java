@@ -23,7 +23,7 @@ public class Artist{
 
     public static ArrayList<Artist> getArtists(Context context){
         ArrayList<Artist> listArtist= new ArrayList<Artist>();
-        listArtist.add(new Artist("Julion Alvarez","Banda", context.getResources().getDrawable(R.mipmap.banda_ico)));
+        listArtist.add(new Artist("Julion Alvarez","Banda", context.getResources().getDrawable(R.mipmap.julion_alvarez)));
 
 
         return listArtist;
