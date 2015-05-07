@@ -1,6 +1,7 @@
 package lennux.com.mx.videoplayer.activities;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -14,11 +15,15 @@ import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 
 import lennux.com.mx.videoplayer.R;
+import lennux.com.mx.videoplayer.fragments.ListIconTextFragment;
 import lennux.com.mx.videoplayer.fragments.NavigationDrawerFragment;
+import lennux.com.mx.videoplayer.fragments.VideoPlayerFragment;
+import lennux.com.mx.videoplayer.models.Genre;
 
 
 public class MainActivity extends ActionBarActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks, VideoPlayerFragment.OnFragmentInteractionListener,
+                        ListIconTextFragment.OnListIconFragmentCallbacks{
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -48,9 +53,11 @@ public class MainActivity extends ActionBarActivity
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
-        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        String nameCategory = Genre.getGenre(getApplicationContext()).get(position).getGenre();
+                FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                .replace(R.id.container, ListIconTextFragment.newInstance(nameCategory))
                 .commit();
     }
 
@@ -102,6 +109,16 @@ public class MainActivity extends ActionBarActivity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onListCategorySelected(String nameCategory) {
+
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 
     /**

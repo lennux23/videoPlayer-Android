@@ -21,9 +21,23 @@ public class Artist{
         this.picArtist = picArtist;
     }
 
-    public static ArrayList<Artist> getArtists(Context context){
+    public static ArrayList<Artist> getArtists(Context context, String nameCategory){
         ArrayList<Artist> listArtist= new ArrayList<Artist>();
-        listArtist.add(new Artist("Julion Alvarez","Banda", context.getResources().getDrawable(R.mipmap.julion_alvarez)));
+        switch (nameCategory){
+            case "Banda":
+                listArtist.add(new Artist("Julion Alvarez",nameCategory, context.getResources().getDrawable(R.mipmap.julion_alvarez)));
+                break;
+            case "Pop":
+                listArtist.add(new Artist("Playa Limbo",nameCategory, context.getResources().getDrawable(R.mipmap.playa_limbo)));
+                break;
+            case "Electronica":
+                listArtist.add(new Artist("Armin Van Buuren",nameCategory, context.getResources().getDrawable(R.mipmap.armin_van_buuren)));
+                break;
+            case "Salsa":
+                listArtist.add(new Artist("Adolecentes Orquesta","nameCategory", context.getResources().getDrawable(R.mipmap.adolecentes)));
+                break;
+        }
+
 
 
         return listArtist;
